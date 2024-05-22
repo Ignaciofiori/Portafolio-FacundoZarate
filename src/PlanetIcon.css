@@ -1,0 +1,38 @@
+.planet-icon {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.planet {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: #9806ff; /* Color del planeta */
+  border-radius: 50%; /* Para hacer un círculo */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.ring {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #9806ff; /* Color del anillo */
+  border-radius: 50%; /* Para hacer un círculo */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotateRing 5s infinite linear; /* Animación de rotación del anillo */
+}
+
+@keyframes rotateRing {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
