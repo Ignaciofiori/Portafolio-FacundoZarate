@@ -1,24 +1,30 @@
 import React from 'react'
-import {trabajos} from "../data/trabajos"
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
-export const Listado = ({limite}) => {
-  console.log(trabajos)
+
+export const Listado = ({proyectos}) => {
+
+
+  console.log(proyectos)
   return (
     <div className='page'>
       <section className='works'>
      
       {
-        trabajos.slice(0,limite).map(trabajo=>(
-          <article key={trabajo.id} className='workItem'>
+        proyectos.map(trabajo=>(
+         
+          <article key={trabajo.id} className={(proyectos.length == 1)?("workItemFor1"):("workItem")}>
+          <Link to={"/proyecto/"+ trabajo.id}>
             <div className='mask'>
-              <img src={"/images/"+ trabajo.id+ ".png"} alt={trabajo.id} />
+              <img src={`/images/${trabajo.imagen}`} alt={trabajo.id} />
             </div>
-
-            <span>{trabajo.categorias}</span>
-            <h2> <Link to={"/proyecto/"+ trabajo.id}>{trabajo.nombre}</Link></h2>
+          </Link>
+            <span>{trabajo.fecha}</span>
+            <h2> {trabajo.nombre}</h2>
             <h3>{trabajo.descripcion}</h3>
           </article>
+    
         ))
           
       }

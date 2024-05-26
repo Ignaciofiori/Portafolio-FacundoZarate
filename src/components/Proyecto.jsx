@@ -15,16 +15,18 @@ export const Proyecto = () => {
     },[])
 
   return (
-    <div className='page pageWork'>
+    <div className='page pageWork stars'>
 
 <div className='mask'>
-              <img src={"/images/"+ proyecto.id+ ".png"}  alt={proyecto.id +" imagen"}/>
+              <img src={"/images/"+ proyecto.imagen}  alt={proyecto.id +" imagen"}/>
             </div>
+            <div className='pageWork-info'>
+            <span>{proyecto.fecha}</span>
       <h1 className='heading'>{proyecto.nombre}</h1>
-    <p>{proyecto.tecnologias}</p>
+    <p>{proyecto.categorias}</p>
     <p>{proyecto.descripcion}</p>
     <a href={"https://"+proyecto.url} target='_blank'>Ir al Proyecto</a>
-
+    </div>
     </div>
   )
 }

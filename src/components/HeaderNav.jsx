@@ -1,6 +1,10 @@
 import React from 'react'
 import { NavLink,Link } from 'react-router-dom'
 import PlanetIcon from '../PlanetIcon'
+import HouseChimney from '../HouseChimney'
+import AboutMeIcon from '../AboutMeIcon'
+import EnvelopeIcon from '../EnvelopeIcon'
+import ClipboardIcon from '../ClipboardIcon'
 export const    HeaderNav = () => {
   return (
    
@@ -18,7 +22,7 @@ export const    HeaderNav = () => {
           Facundo
         </h3>
         <h3>
-          Zárate 
+          Zárate
         </h3>
         <h3>
           Diseño
@@ -28,21 +32,32 @@ export const    HeaderNav = () => {
         </div>
         </Link>
         <nav>
-            <ul>
+            <ul className='ul-words'>
                 <li>
                     <NavLink to="/inicio"  className={({isActive})=>isActive == true ? "active" : ""}> Inicio </NavLink>
-                </li>
-                <li>
-                <NavLink to="/portafolio" className={({isActive})=>isActive == true ? "active" : ""}> Portafolio </NavLink>
                 </li>
                 <li>
                 <NavLink to="/servicios" className={({isActive})=>isActive == true ? "active" : ""}> Servicios </NavLink>
                 </li>
                 <li>
-                <NavLink to="/curriculum" className={({isActive})=>isActive == true ? "active" : ""}> Curriculum </NavLink>
+                <NavLink to="/curriculum" className={({isActive})=>isActive == true ? "active" : ""}> Acerca de Mí </NavLink>
                 </li>
                 <li>
                 <NavLink to="/contacto" className={({isActive})=>isActive == true ? "active" : ""}> Contacto </NavLink>
+                </li>
+            </ul>
+            <ul className='ul-icons'>
+                <li>
+                    <NavLink to="/inicio"  className={({isActive})=>isActive == true ? "active" : ""}> <HouseChimney/> </NavLink>
+                </li>
+                <li>
+                <NavLink to="/servicios" className={({isActive})=>isActive == true ? "active" : ""}> <ClipboardIcon/> </NavLink>
+                </li>
+                <li>
+                <NavLink to="/curriculum" className={({isActive})=>isActive == true ? "active" : ""}> <AboutMeIcon/> </NavLink>
+                </li>
+                <li>
+                <NavLink to="/contacto" className={({isActive})=>isActive == true ? "active" : ""}> <EnvelopeIcon/></NavLink>
                 </li>
             </ul>
         </nav>

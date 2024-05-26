@@ -1,0 +1,26 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+.container {
+    width: 200vw; / Doble del ancho de la ventana /
+    height: 200vh; / Doble de la altura de la ventana /
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    width: 50vw; / Ajusta el tamaño del contenido */
+    height: 50vh;
+    background-color: #f0f0f0;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

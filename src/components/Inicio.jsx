@@ -1,29 +1,42 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Listado} from './Listado'
+import { trabajos } from '../data/trabajos'
+import {Portfolio} from './Portfolio'
+import {Buscador} from './Buscador'
+import { useState } from 'react'
 
 export const Inicio = () => {
+
+const [proyectos,setProyectos] =useState(trabajos)
+
+console.log(proyectos)
+
   return (
 
     <div className='home'>
      
-      <h1>
-        Hola, <strong>Soy Facundo Quick Zárate</strong> y Soy Diseñador en Buenos Aires, 
-        y ofrezco mis servicios de  <strong>Diseño</strong> y <strong>Animación </strong>en todo tipo de proyectos.
+  <div className="stars"> 
+
+      <h1 className='title'>
+       <strong>Hola,</strong> <br /> soy <strong>Facundo Quick Zárate</strong> <br />hago <strong>pensamiento estratégico</strong> y <strong>diseño creativo</strong> <br />para diversos proyectos <br />en <strong>Buenos Aires. </strong>
+
       </h1>
 
-    <h2 className='title'>
-      Te ayudo a estilizar tu sitio o aplicación web, tener más visibilidad y relevancia en internet. <Link to="/contacto"> Contacta conmigo. </Link> 
-    </h2>
+<div className="bannerWithArrow">  
+    <div className='h2_container'>
+    <h2 className='heading'> mi trabajo </h2>
 
-    <section className='lastWorks'>
-    
-    <h2 className='heading'> Algunos de mis Diseños:</h2>
-    
-    <p>Estos son algunos de mis trabajos de diseño</p>
-    
+    </div>
 
-     <Listado limite="2"/>     
+    <img src="images/arrowDown.png" alt="Flecha hacia abajo" className="arrowIcon" />
+
+    </div>
+    <Buscador 
+              setProyectos = {setProyectos}
+              proyectos ={proyectos}/>
+    </div>
+    <section className='lastWorks stars'>
+    <Portfolio proyectos={proyectos}/>    
     
     </section>
     </div>

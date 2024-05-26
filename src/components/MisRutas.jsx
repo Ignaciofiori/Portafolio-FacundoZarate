@@ -17,8 +17,11 @@ export const MisRutas = () => {
     <HeaderNav/>
 
    {/*CONTENIDO CENTRAL */}
+  
+  
+
       <section className='content'>
-        <div className='stars'>
+      
             <Routes>
         <Route path='/' element={<Navigate to="/inicio"/> }/>
         <Route path='/inicio' element={<Inicio/>  }/>
@@ -34,11 +37,12 @@ export const MisRutas = () => {
         } />
 
         </Routes>
-        </div>
+      
         </section>
+  
     {/*FOOTER */}
+       <Footer/>
    
-    <Footer/>
 
     
   </BrowserRouter>

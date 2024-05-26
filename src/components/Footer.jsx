@@ -2,8 +2,8 @@ import React from 'react'
 
 export const Footer = () => {
   return (
-   <footer className='footer'>
-    Facundo Zarate Diseño  &copy; Faloperos y Bohemios INC. - 2024
-   </footer>
+   <div className='footer stars'>
+    Facundo Zarate Diseño  &copy; El Vago y El Gringo INC. - 2024
+   </div>
   )
 }

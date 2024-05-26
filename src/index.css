@@ -1,4 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+}
 
+body {
+ font-family:'Arimo',san-serif;
+  
+}
 
 a {
   font-weight: 500;
@@ -9,11 +20,11 @@ a:hover {
   color: #535bf2;
 }
 
-
-
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin-top: 0px;
+ 
 }
 
 button {
@@ -22,7 +33,7 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
+  font-family: "Arimo",sans-serif;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
@@ -35,114 +46,151 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-
-
-
-
 /*CSS DIV DE GRID LAYOUT*/
-.grid-layout{
+.grid-layout {
   display: grid;
   margin: 0 auto;
   width: 100%;
   min-height: 800px;
-
-  background-color:white;
+  background-color: white;
   grid-template-areas: "nav content"
                       "nav content"
                       "nav content"
-                      "footer footer";
-
+                      "nav footer";
   grid-template-columns: 17% auto;
 }
 
-
 /*CSS DEL HEADERNAV*/
+nav{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: #1a1a1a;
+  padiing-top:20px;
+}
 
-.headerNav{
-  grid-area:nav;
- background-color: #1a1a1a;
- color: white;
- margin-left: 0px;
-display: flex;
-flex-direction: column;
-overflow: hidden;
-box-shadow: 0px 10px 20px #ddd;
-border-radius: 1px solid white; 
+.headerNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  grid-area: nav;
+  height: 100vh;
+  width: 17%;
+  background-color: #1a1a1a;
+  color: white;
+  margin-left: 0px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
 }
 /*CSS DEL DIV LOGO QUE CONTIENE EL H3 Y EL PLANET LOGO*/
-.headerNav .logo{
+.headerNav .logo {
   display: flex;
   margin-bottom: 20px;
   flex-direction: row;
   align-items: center;
-  margin:20PX;
+  margin: 20px;
 } 
 
-.headerNav .logo h3{
- 
+.headerNav .logo h3 {
   flex-basis: 40px;
   margin-left: 10px;
   font-weight: 300;
   text-transform: uppercase;
   margin-top: 0%;
   margin-bottom: 0px;
+  font-family:"Arimo", "Helvetica Neue",;
 }
 
-.link-logo{
+.link-logo {
   text-decoration: none;
-  color: inherit;
+  color: inherit;   
 }
 
-.headerNav .logo span{
+.headerNav .logo span {
   display: block;
   font-size: 90px;
   font-weight: bolder;
   margin-top: -8px;
   margin-bottom: -20px;
-  }
+}
 
-  /*CSS DEL LOS UL DEL HEADER NAV*/
-  .headerNav ul{
+/*CSS DEL LOS UL DEL HEADER NAV*/
+.headerNav ul {
   display: flex;
   flex-direction: column;
   color: white;
   text-decoration: none;
   list-style: none;
-  padding-top:50px;
   padding-left: 0px;
-    
-  }
-  /*CSS DEL LOS LI DEL HEADER NAV*/
-  .headerNav li{
-    display: flex;
-    justify-content: start;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 25%;
-  }
-  .headerNav li a {
-    color: white;
-    text-decoration: none;
-    font-size: 17px;
-    margin-left: 15px;
-    margin-right: 15px;
-    transition: all 300ms;
-    }
+  margin: 0px;
+}
 
-    /*HOVER DE LOS LI (COLORCITO CUANDO SE SELECCIONAN)*/
-    .headerNav .active,
-.headerNav a:hover{
+/*CSS DEL LOS LI DEL HEADER NAV*/
+.headerNav li {
+  position: relative;
+  display: flex;
+  justify-content: start;
+  align-items:space-between;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  padding-top: 40px;
+ 
+}
+
+.headerNav li::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px; /* Grosor de la línea */
+  background: linear-gradient(to right, #9806ff, #ffffff); /* Gradient de colores */
+  transform: scaleX(0); /* Por defecto, la línea está oculta */
+  transition: transform 0.3s ease; /* Transición suave */
+}
+.headerNav li:hover::after {
+  transform: scaleX(1); /* Muestra la línea al pasar el ratón sobre el elemento */
+}
+
+
+.headerNav li a {
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  margin-left: 15px;
+  margin-right: 15px;
+  transition: all 300ms;
+  padding:30px
+}
+
+/*HOVER DE LOS LI (COLORCITO CUANDO SE SELECCIONAN)*/
+.headerNav .active,
+.headerNav a:hover {
   color: #9806ff;
+
+}
+
+
+/*CSS DE LOS ICONOS DELE NAVBAR*/
+.ul-icons li {
+  display: none;
 }
 
 /*CSS DEL DIV CONTENT QUE CONTIENE DONDE SE VAN A PRESENTAR LOS ELEMENTOS PRINCIPALES*/
-.content{
-  color:white ;
-    position: relative;
-    background-color: #000; /* Color de fondo por defecto */
-    overflow: hidden;
-  grid-area:content   
+.content {
+  color: white;
+  position: relative;
+  background-color: #000; /* Color de fondo por defecto */
+  overflow: hidden;
+  grid-area: content;
+  padding: 10px;
+  min-height: 95vh;
 }
 
 .stars {
@@ -151,144 +199,721 @@ border-radius: 1px solid white;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="2" fill="%23fff" /%3E%3C/svg%3E');
-  animation: blinkStars 5s infinite; /* Animación para el parpadeo de las estrellas */
-}
-
-
-@keyframes blinkStars {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.75;
-  }
+  background-image: url("../public/images/fondoIndex.png");
+  background-repeat: no-repeat; /* No repetir la imagen de fondo */
+  background-size:cover; /* Ajustar la imagen para cubrir completamente el área */
+  background-position: center; /* Centrar la imagen de fondo */
 }
 
 
 /*CSS DEL DIVE HOME QUE CONTIENE TODO EL CONTENIDO DEL COMPONENTE INICIO*/
-.home h1{
-  font-family: Georgia, 'Times New Roman', Times, serif;
+.home {
+  position:static;
+  padding: 0; /* Asegúrate de que no haya relleno adicional */
+  margin: 0; /* Asegúrate de que no haya margen adicional */
+}
+
+.home h1 {
+  font-family: "Arimo";
   font-weight: 400;
-  font-size: 50px;
+  font-size: 30px;
   margin-bottom: 0px;
-  margin-top: 80px;
+  margin-top: 0px;
   color: white;
-  }
-  .home strong{
-    color: #9806ff;
-  }
-  .home h2{
-    color:whitesmoke;
-    font-weight: lighter;
-  }
-  .home .title a{
-    color: white;
-    background-color: #9806ff;
-    padding: 5px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: all 300ms;
-  }
-  .home .title a:hover{
-    background-color: green;
-    cursor: pointer;
-  }
+  text-align: left;
+  padding: 25px;
+  padding-top: 40px;
+}
+.home strong {
+  color: #9806ff;
+  font-size: 35px;
+  font-family: 'Noto Serif';
+}
+.home h2  {
+  color: whitesmoke;
+  font-weight: lighter;
+  line-height: 1.5;
+}
 
-  .home p{
-    color: white;
-  }
+.h2_container h2 {
 
+
+
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  color: white;
+  text-align: left;
+  padding: 25px;
+  padding-top: 40px;
+}
+
+.h2_container {
+  flex-grow: 1;
+text-align: right;
+margin: 0px;
+width:100%;
+font-size: 25px;
+padding-left:40px ;
+
+}
+.heading{
+  width:100%
+}
+.h2_container p{
+width: 100%;
+  display: inline;
+}
+.bannerWithArrow {
+  display: flex;
+  align-items: center;
+  justify-content:space-around; /* Espacio entre el texto y la imagen */ 
+  width: 100%;
+ padding-bottom: 50px;
+ padding-top: 20px;
+
+}
+
+.bannerWithArrow .heading {
+  margin: 0; /* Asegúrate de que no haya margen adicional */
+}
+
+ .arrowIcon {
+  width: 450px; /* Ajusta el tamaño de la imagen según sea necesario */
+  height: auto; /* Espacio entre el texto y la imagen */
+  filter: invert(1);
+  transition: transform 1s ease-in-out;
+  flex-grow: 1;
+
+}
+
+.arrowIcon:hover {
+  transform: rotate(360deg);
+}
+
+
+.home p {
+  color: white;
+}
 
 /*CSS DEL LISTADO DE PROYECTOS*/
 .page .heading,
-.home .heading{
+.home .heading {
   font-weight: 500;
   font-size: 40px;
   color: white;
- margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
-.page .heading{
+.page .heading {
   font-size: 55px;
   font-weight: bold;
 }
 
-.home p{
-  color:white;
+.home p {
+  color: white;
 }
 
-.works{
+.works {
   display: flex;
   flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
-.workItem{
+.workItemFor1 img {
+  max-height: 75vh;
+  max-height: auto;
+  object-fit: contain;
+}
+
+.workItem {
   flex-basis: 30%;
   flex-grow: 1;
   margin: 30px;
-  }
+  width: 200px;
+  justify-content: center; /* Centra la imagen horizontalmente */
+    align-items: center; /* Centra la imagen verticalmente */
 
-  .workItem .mask{
+  
+}
+
+
+  .workItem .mask {
     width: 100%;
-  min-height: 400px;
-  overflow: hidden;
-  border: solid 1px #ccc;
-  box-shadow: 0px 5px 15px gray;
-  }
+    max-width: 1000px;
+    max-height: 500px;
+    overflow: hidden;
+    border: solid 1px #ccc;
+    height: auto;
+    display: flex;
+    justify-content: center; /* Centra la imagen horizontalmente */
+    align-items: center; /* Centra la imagen verticalmente */
+}
 
-  .workItem .mask:hover img{
-    width: 150%;
-    margin-right: 30%;
-    cursor: pointer;
-    }
+.workItem .mask img {
+  width: 100%;
+  height: 100%;
+  max-height: 600px;
+  object-fit: contain; /* Ajusta la imagen sin deformarla */
+  display: block;
+}
+.workItem .mask:hover img {
+  cursor: pointer;
+  object-fit: contain; /* Ajusta la imagen sin deformarla */
+}
 
-    .workItem h2{
-      color:white;
-      margin-top: 5px;
-      margin-bottom: 10px;
-      display: block;
-      font-size: 30px;
-    }
+.workItem h2 {
+  color: white;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display: block;
+  font-size: 30px;
+}
 
+.workItem h3 {
+  color: white;
+  margin-top: 0px;
+  display: block;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
 
-    .workItem h3{
-      color:white;
-      margin-top:0px;
-      display: block;
-      border-top:1px solid #ddd ;
-      padding-top: 10px;
-      
-    }
-    
+.workItem a {
+  color: white;
+  text-decoration: none;
+  transition: 300ms;
+}
+.workItem a:hover {
+  color: #9806ff;
+}
 
-    .workItem a{
-      color: white;
-      text-decoration: none;
-      transition: 300ms;
-    }
-    .workItem a:hover{
-    color: #9806ff;
-    
-    }
-    
+.pageWork{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+}
 
-    .pageWork .mask{
-      
-      height: 300px;
-      overflow: hidden;
-      box-shadow: 0px 0px 20px #ddd;
-    }
+.pageWork .mask {
+  height: auto; /* Elimina la restricción de altura máxima */
+  max-height: 80vh; /* Establece una altura máxima para pantallas más grandes */
+  width: auto; /* Elimina la restricción de anchura máxima */
+  max-width: 90%; /* Limita el ancho máximo para evitar que la imagen se estire demasiado en pantallas muy grandes */
+  margin: 0 auto; /* Centra la imagen horizontalmente */
+}
 
+.pageWork .mask img {
+  height: 100%; /* Asegura que la imagen ocupe todo el espacio disponible en la máscara */
+  width: 100%; /* Ajusta el ancho de la imagen automáticamente según su contenedor */
+  object-fit: contain; /* Ajusta la imagen sin deformarla, manteniendo su relación de aspecto */
+}
 /*CSS DEL FOOTER*/
-.footer{
+.footer {
   grid-area: footer;
+  display: flex;
+  justify-content: center; /* Centra los elementos horizontalmente */
+  align-items: center;
   text-align: center;
   font-size: 14px;
-  border-top:  3px solid black;
+  border-top: 3px solid black;
   padding-top: 45px;
   background-color: #f5f5f5;
-  min-height: 40px;
+  min-height: 5vh;
   line-height: 7px;
-  color: #444;
+  color: #f2f2f2;
+  padding: 10px;
+  line-height: 2;
+  justify-content: center  ;
 
 }
+
+.stars{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.search-container {
+  position: relative;
+  width: 300px;
+  padding-bottom: 20px;
+}
+
+.search-container input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #ffffff;
+  border-radius: 50px;
+  background-image: url("../public/images/fondoIndex.png");
+  color: #fff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.search-container input[type="text"]::placeholder {
+  color: #ffffff;
+}
+
+.search-container input[type="text"]:focus {
+  border-color: #9806ff;
+  box-shadow: 0 0 15px rgba(152, 6, 255, 0.7);
+}
+
+.search-container input[type="text"]:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+
+
+@media (min-width: 1500px) {
+  .pageWork .mask {
+    max-height: 80vh; /* Altura máxima ajustada para pantallas grandes */
+    height: auto;
+    width: 90%; /* Ancho máximo ajustado para pantallas grandes */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    overflow: hidden;
+  }
+  .pageWork .mask img {
+    max-height: 100%; /* Ajusta la altura máxima de la imagen */
+    width: 100%; /* Ajusta el ancho de la imagen */
+    object-fit: contain; /* Ajusta la imagen sin deformarla */
+  }
+}
+
+
+@media (max-width: 1224px) {
+  .works {
+    display: flex;
+    flex-direction: column; /* Cambia la dirección a una columna */
+    justify-content: center;
+    align-items: center;
+  }
+  .name-container {
+    display: none;
+  }
+
+  .logo {
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    flex-direction: column; /* Cambia la dirección del flex a columna */
+  }
+
+  .logo h3 {
+    display: none; /* Oculta los h3 */
+  }
+  .pageWork .mask {
+ 
+   object-fit: contain; /* Ajusta esta altura según sea necesario */
+    justify-content: center;
+  }
+
+  
+
+  .workItem .mask img {
+    max-height: 100vh;
+    
+    object-fit: contain;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .workItemFor1 img {
+    max-height: 75vh;
+    max-height: auto;
+    object-fit: contain;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .arrowIcon {
+    width: 450px;
+}
+}
+
+@media (max-width: 1395px) {
+  .workItem {
+    width: 90%;
+  }
+  .pageWork .mask {
+    height: fit-content; /* Ajusta esta altura según sea necesario */
+  }
+ 
+    .workItemFor1 img {
+      max-height: 75vh;
+      max-height: auto;
+      object-fit: contain; /* Ajusta la imagen sin deformarla */
+  }
+
+}
+
+@media (max-width:1000px) {
+
+
+  .arrowIcon {
+    width: 400px;
+}
+
+}
+
+
+@media (max-width: 850px) {
+  .works {
+    flex-direction: column; /* Cambia la dirección a una columna */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pageWork .mask {
+    height: 400px; /* Ajusta esta altura según sea necesario */
+  }
+  .pageWork .mask img {
+    height: 100%; /* Asegúrate de que la imagen ocupe el contenedor ajustado */
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+  }
+  .workItemFor1 img {
+    max-height: 55vh;
+    max-height: auto;
+    object-fit: contain;
+  }
+
+  .arrowIcon {
+    width: 350px;
+}
+
+}
+
+
+@media (max-width: 760px) {
+ 
+  .headerNav li a{
+  font-size: 15px;
+}
+.home h1{
+  font-size: 24px;    
+    }
+.home h2{
+  font-size: 18px;
+}
+.page .heading, .home .heading {
+  font-size: 20px;
+}
+h3{
+
+  font-size: 15px;
+}
+.planet{
+  width:40px;
+  height: 40px;
+}
+.ring{
+  width:60px;
+  height: 60px;
+}
+
+.pageWork .mask {
+  height: 350px; /* Ajusta esta altura según sea necesario */
+}
+.pageWork .mask img {
+  height: 100%; /* Asegúrate de que la imagen ocupe el contenedor ajustado */
+  object-fit: cover; /* Ajusta la imagen sin deformarla */
+}
+
+.arrowIcon {
+  width: 350px;
+}
+
+}
+
+
+@media (max-width: 695px) {
+  .ul-words  li{
+    display: none;
+  }
+  .ul-icons li{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items: center;
+    font-size: 40px;
+    padding-top: 0px;
+  }
+
+  .iconContainer {
+    font-size: 35px; /* Cambia el tamaño de los íconos según sea necesario */
+  }
+
+ .headerNav
+  .footer{
+    max-height:500px
+  }
+  .pageWork .mask {
+    height: 300px; /* Ajusta esta altura según sea necesario */
+  }
+  .pageWork .mask img {
+    height: 100%; /* Asegúrate de que la imagen ocupe el contenedor ajustado */
+    object-fit: contain; /* Ajusta la imagen sin deformarla */
+  }
+}
+  
+  
+  @media (max-width: 660px) {
+
+    .headerNav li a{
+      font-size: 10px;
+    }
+    .pageWork .mask {
+      height: 250px; /* Ajusta esta altura según sea necesario */
+    }
+    .pageWork .mask img {
+      height: 100%; /* Asegúrate de que la imagen ocupe el contenedor ajustado */
+      object-fit: contain; /* Ajusta la imagen sin deformarla */
+    }
+    .workItemFor1 img {
+      max-height: 45vh;
+      max-height: auto;
+      object-fit: contain;
+    }
+
+    .arrowIcon {
+      width: 325px;
+  }
+  }
+ 
+  @media (max-width: 550px) {
+    .pageWork .mask {
+      height: 200px; /* Ajusta esta altura según sea necesario */
+    }
+    .pageWork .mask img {
+      height: 100%; /* Asegúrate de que la imagen ocupe el contenedor ajustado */
+      object-fit: contain; /* Ajusta la imagen sin deformarla */
+    }
+    .arrowIcon {
+      width: 275px;
+  }
+  .workItemFor1 img {
+    max-height: 38vh;
+    max-height: auto;
+    object-fit: contain;
+  }
+
+  }
+
+
+  @media (max-width: 468px) {
+    .workItem{
+      margin: 0 auto;
+    }
+    .pageWork .mask {
+      height: 200px; /* Ajusta esta altura según sea necesario */
+    }
+    .pageWork .mask img {
+      height: 100%; /* Asegúrate de que la imagen ocupe el contenedor ajustado */
+      object-fit: contain; /* Ajusta la imagen sin deformarla */
+    }
+
+    .workItemFor1 img {
+      max-height: 32vh;
+      max-height: auto;
+      object-fit: contain;
+    }
+  }
+
+    @media (max-width:410px){
+      .arrowIcon {
+        width: 225px;
+
+    }
+    .workItemFor1 img {
+      max-height: 25vh;
+      max-height: auto;
+      object-fit: contain;
+    }
+    .h2_container{
+      font-size: 15px;
+    }
+    }
+
+    
+
+    @media (max-width: 360px) {
+      
+      .workItem{
+        margin: 0 auto;
+      }
+      .workItem .mask {
+        height:auto; 
+        /* Ajusta la altura para pantallas muy pequeñas */
+      }
+      .pageWork .mask img {
+        height: 100%; /* Asegúrate de que la imagen ocupe el contenedor ajustado */
+        object-fit: contain; /* Ajusta la imagen sin deformarla */
+      }
+
+      .arrowIcon {
+        width: 200px;
+    }
+
+    .search-container {
+     width:200px;
+    }
+    }
+
+
+    /* Media queries basadas en la altura */
+@media (max-height: 900px) {
+  .pageWork .mask {
+    max-height: 80vh;
+  }
+  .pageWork .mask img {
+    max-height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (max-height: 800px) {
+  .pageWork .mask {
+    max-height: 80vh;
+  }
+  .pageWork .mask img {
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+@media (max-height: 700px) {
+  .pageWork .mask {
+    max-height: 80vh;
+  }
+  .pageWork .mask img {
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+@media (max-height: 665px) {
+  .pageWork .mask {
+    max-height: 80vh;
+  }
+  .pageWork .mask img {
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .headerNav li a {
+    padding:15px;
+    }
+}
+@media(max-height:570px) {
+  .headerNav li {
+  padding-top: 5px;
+  }
+.pageWork .mask {
+  height: auto; /* Elimina la restricción de altura máxima */
+  max-height: 80vh; /* Establece una altura máxima para pantallas más grandes */
+  width: auto; /* Elimina la restricción de anchura máxima */
+  max-width: 90%; /* Limita el ancho máximo para evitar que la imagen se estire demasiado en pantallas muy grandes */
+  margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+.pageWork .mask img {
+  height: 100%; /* Asegura que la imagen ocupe todo el espacio disponible en la máscara */
+  width: 100%; /* Ajusta el ancho de la imagen automáticamente según su contenedor */
+  object-fit: contain; /* Ajusta la imagen sin deformarla, manteniendo su relación de aspecto */
+}
+}
+
+@media (max-height: 500px) {
+  .pageWork .mask {
+    max-height: 80vh;
+    width: fit-content;
+  }
+  .pageWork .mask img {
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+@media(max-height: 440px) {
+.iconContainer{
+font-size: 27px;
+}
+.ul-words li a{
+  font-size: 10px;
+  padding: 10px;;
+}
+
+}
+@media (max-height: 400px) {
+  .pageWork .mask {
+    max-height: 80vh;
+  }
+  .pageWork .mask img {
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+
+@media(max-height:393px) {
+  .iconContainer{
+    font-size: 17px;
+    }
+}
+
+@media(max-height:393px) {
+  .iconContainer{
+    padding: 0px;
+    font-size: 15px;
+    }
+}
+
+/* Media queries basadas en el ancho para asegurar que la imagen no ocupe toda la pantalla en dispositivos móviles */
+@media (max-width: 600px) {
+  .pageWork .mask {
+    max-height:70vh;
+  }
+  .pageWork .mask img {
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+@media(max-height:350px){
+.ul-words li a{
+  font-size: 8px;
+}
+}
+@media (max-width: 480px) {
+  .pageWork .mask {
+    max-height: 500vh;
+  }
+  .pageWork .mask img {
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 360px) {
+  .pageWork .mask {
+    max-height: 455vh;
+  }
+  .pageWork .mask img {
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .ring{
+    width:45px;
+    height: 45px;
+  }
+  .planet{
+    width:30px;
+    height: 30px;
+  }
+  strong{
+    font-size: 10px;
+  }
+}
+

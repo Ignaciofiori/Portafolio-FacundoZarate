@@ -2,6 +2,6 @@ import React from 'react'
 
 export const Servicios = () => {
   return (
-    <div>Servicios</div>
+    <div className='stars'>Servicios</div>
   )
 }
